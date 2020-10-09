@@ -45,15 +45,6 @@ namespace BulkyBook.Areas.Admin.Controllers
             return View(coverType);
         }
 
-        #region API CALLS
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            // var allObj = _unitOfWork.CoverType.GetAll(); using default way
-            var allObj = _unitOfWork.SP_Call.List<CoverType>(SD.Proc_CoverType_GetAll, null); // using store procedure to getall
-            return Json(new { data = allObj });
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Upsert(CoverType coverType)
@@ -95,6 +86,15 @@ namespace BulkyBook.Areas.Admin.Controllers
             }
 
             return View(coverType);
+        }
+
+        #region API CALLS
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            // var allObj = _unitOfWork.CoverType.GetAll(); using default way
+            var allObj = _unitOfWork.SP_Call.List<CoverType>(SD.Proc_CoverType_GetAll, null); // using store procedure to getall
+            return Json(new { data = allObj });
         }
 
         [HttpDelete]
