@@ -151,7 +151,7 @@ namespace BulkyBook.Areas.Identity.Pages.Account
                     // for admin registration
                     //await _userManager.AddToRoleAsync(user, SD.Role_Admin);
 
-                    // role is not selected and user is registered as individual user
+                    //role is not selected and user is registered as individual user
                     if (user.Role == null)
                     {
                         await _userManager.AddToRoleAsync(user, SD.Role_User_Indi);
